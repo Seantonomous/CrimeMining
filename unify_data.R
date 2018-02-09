@@ -1,8 +1,8 @@
 library(dplyr)
 #################################### LA -> UNIFIED CONVERSION ##########################################
 print("Reading csvs...")
-df <- read.csv(file="~/DataMining/la_crimes.csv",sep=",")
-df2 <- read.csv(file="~/DataMining/la_to_ch_translate.csv",sep=",")
+df <- read.csv(file="la_crimes.csv",sep=",")
+df2 <- read.csv(file="la_to_ch_translate.csv",sep=",")
 
 # Get only the rows with codes we want
 codes <- df2[["LA.CODE"]]
@@ -25,13 +25,13 @@ df$Crime.Code.Description <- unname(descriptions[as.character(df$Crime.Code)])
 df$Crime.Code <- unname(new_codes[as.character(df$Crime.Code)])
 
 print("Writing csv...")
-write.csv(x=df,file="~/DataMining/la_cleaned_for_compare.csv",row.names = FALSE)
+write.csv(x=df,file="la_cleaned_for_compare.csv",row.names = FALSE)
 print("Done!")
 
 #################################### CH -> UNIFIED CONVERSION ##########################################
 print("Reading csvs...")
-df <- read.csv(file="~/DataMining/chicago_crimes.csv",sep=",")
-df2 <- read.csv(file="~/DataMining/ch_to_la_translate.csv",sep=",")
+df <- read.csv(file="chicago_crimes.csv",sep=",")
+df2 <- read.csv(file="ch_to_la_translate.csv",sep=",")
 
 # Get only the rows with codes we want
 codes <- df2[["CH.CODE"]]
@@ -57,5 +57,5 @@ df$Crime.Code.Description <- unname(descriptions[as.character(df$`Crime Code`)])
 df$Crime.Code <- unname(new_codes[as.character(df$`Crime Code`)])
 
 print("Writing csv...")
-write.csv(x=df,file="~/DataMining/ch_cleaned_for_compare.csv",row.names = FALSE)
+write.csv(x=df,file="ch_cleaned_for_compare.csv",row.names = FALSE)
 print("Done!")
